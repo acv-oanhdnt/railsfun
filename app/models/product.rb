@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
     belongs_to :category, optional: true
+   extend Enumerize
    validates :title, :description, presence: true 
    validates :price, numericality: { greater_than: 0}, presence: true 
    
@@ -24,6 +25,6 @@ class Product < ActiveRecord::Base
       self.title = title.downcase
    end
    
-   extend Enumerize
    enumerize :level, in: { easy: 1, medium: 2, hard: 3 }
+   enumerize :country, in: ISO3166::Country.translations.invert
 end
