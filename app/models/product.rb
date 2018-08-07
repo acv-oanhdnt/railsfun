@@ -1,6 +1,6 @@
 class Product < ActiveRecord::Base
    validates :title, :description, presence: true 
-   validate :price, numericality: {:greater_than 0}, presence: true 
+   validates :price, numericality: { greater_than: 0}, presence: true 
    
    validate :title_is_shorter_than_description
    def title_is_shorter_than_description
