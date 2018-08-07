@@ -1,4 +1,5 @@
 class Product < ActiveRecord::Base
+    belongs_to :category, optional: true
    validates :title, :description, presence: true 
    validates :price, numericality: { greater_than: 0}, presence: true 
    
@@ -19,7 +20,7 @@ class Product < ActiveRecord::Base
    end
    
    before_save :lower_title
-   def
+   def lower_title
       self.title = title.downcase
    end
 end
