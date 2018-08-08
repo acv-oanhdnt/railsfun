@@ -1,10 +1,11 @@
 class ProductsController < ApplicationController
+  before_action :get_product, only: [:show, :edit, :update, :destroy]
   def index
     @products = Product.published.includes(:category)
   end
   
   def show
-    @product = Product.find(params[:id])
+    
   end
   
   def new
@@ -12,53 +13,40 @@ class ProductsController < ApplicationController
   end
   
   def create
-    product_params = params.require(:product).permit(:title,
-                                                      :description,
-                                                      :price,
-                                                      :level,
-                                                      :published,
-                                                      :country,
-                                                      :category_id)
     @product = Product.new(product_params)
-    if @product.save
-      flash[:notice] = "You have successfully created the product"
-      redirect_to products_path
-    else
-      flash.now[:notice] = 'There is an error in your form'
-      render :new
-    end
+    return redirect_to products_path, notice: 'You have successfully created the product' if @product.save
+    flash.now[:notice] = 'There is an error in your form'
+    render :new
   end
   
   def edit
-    @product = Product.find(params[:id])
     render :new
   end
   
   def update
-    product_params = params.require(:product).permit(:title,
-                                                      :description,
-                                                      :price,
-                                                      :level,
-                                                      :published,
-                                                      :country,
-                                                      :category_id)
-    @product = Product.find(params[:id])
-    if @product.update(product_params)
-      flash[:notice] = "You have successfully created the product"
-      redirect_to products_path
-    else
-      flash.now[:notice] = 'There is an error in your form'
-      render :new
-    end
+    return redirect_to products_path, notice: 'You have successfully updated the product' if @product.update(product_params)
+    flash.now[:notice] = 'There is an error in your form'
+    render :new
   end
   
   def destroy
+    msg = @product.destroy ? 'Delete successfully' : 'Delete failed'
+    redirect_to products_path, notice: msg
+  end
+  
+  private
+  
+  def product_params
+     params.require(:product).permit(:title,
+                                      :description,
+                                      :price,
+                                      :level,
+                                      :published,
+                                      :country,
+                                      :category_id)
+  end
+  
+  def get_product
     @product = Product.find(params[:id])
-    if @product.destroy
-      flash[:notice] = 'Delete successfully'
-    else
-      flash[:notice] = 'Delete failed'
-    end
-    redirect_to products_path
   end
 end
