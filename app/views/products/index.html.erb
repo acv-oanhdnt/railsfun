@@ -4,12 +4,14 @@
         <th>title</th>
         <th>price</th>
         <th>category</th>
+        <th>edit</th>
     </tr>
     <% @products.each do |product| %>
     <tr>
       <td><%= link_to product.title, product_path(product) %></td>
       <td><%= product.price %></td>
       <td><%= product.category.title %></td>
+      <td><%= link_to 'edit', edit_product_path(product) %></td>
     </tr>
     <% end %>
 </table>
