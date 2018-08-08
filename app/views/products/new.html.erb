@@ -4,5 +4,7 @@
   <%= p.input :price, min: 0.01 %>
   <%= p.input :level, as: :select, collection: Product.level.options %>
   <%= p.input :country %>
+  <%= p.input :published %>
+  <%= p.input :category %>
   <%= p.action :submit %>
 <% end %>
