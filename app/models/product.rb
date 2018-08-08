@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-    belongs_to :category, optional: true
+   belongs_to :category, optional: true
    extend Enumerize
    validates :title, :description, presence: true 
    validates :price, numericality: { greater_than: 0}, presence: true 
