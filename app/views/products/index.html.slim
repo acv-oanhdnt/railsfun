@@ -1,11 +1,12 @@
-= link_to 'Create', new_product_path
-table
-  thead
-    tr
-      th title
-      th price
-      th category
-      th edit
-      th delete
-  tbody
-      = render partial: 'product', collection: @products
+#products_index
+  = link_to 'Create', new_product_path
+  table
+    thead
+      tr
+        th title
+        th price
+        th category
+        th edit
+        th delete
+    tbody
+        = render partial: 'product', collection: @products
