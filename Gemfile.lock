@@ -47,6 +47,8 @@ GEM
     archive-zip (0.11.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
+    autoprefixer-rails (9.1.0)
+      execjs
     awesome_print (1.8.0)
     better_errors (2.4.0)
       coderay (>= 1.0.0)
@@ -57,6 +59,10 @@ GEM
       debug_inspector (>= 0.0.1)
     bootsnap (1.3.1)
       msgpack (~> 1.0)
+    bootstrap (4.1.3)
+      autoprefixer-rails (>= 6.0.3)
+      popper_js (>= 1.12.9, < 2)
+      sass (>= 3.5.2)
     builder (3.2.3)
     byebug (10.0.2)
     capybara (3.5.1)
@@ -90,10 +96,16 @@ GEM
       sort_alphabetical (~> 1.0)
     crass (1.0.4)
     debug_inspector (0.0.3)
+    diff-lcs (1.3)
     enumerize (2.2.2)
       activesupport (>= 3.2)
     erubi (1.7.1)
     execjs (2.7.0)
+    factory_bot (4.10.0)
+      activesupport (>= 3.0.0)
+    factory_bot_rails (4.10.0)
+      factory_bot (~> 4.10.0)
+      railties (>= 3.0.0)
     ffi (1.9.25)
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
@@ -130,6 +142,7 @@ GEM
     nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
     pg (1.0.0)
+    popper_js (1.14.3)
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -162,6 +175,10 @@ GEM
       bundler (>= 1.3.0)
       railties (= 5.2.0)
       sprockets-rails (>= 2.0.0)
+    rails-controller-testing (1.0.2)
+      actionpack (~> 5.x, >= 5.0.1)
+      actionview (~> 5.x, >= 5.0.1)
+      activesupport (~> 5.x)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -177,6 +194,23 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    rspec-core (3.8.0)
+      rspec-support (~> 3.8.0)
+    rspec-expectations (3.8.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.8.0)
+    rspec-mocks (3.8.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.8.0)
+    rspec-rails (3.8.0)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 3.8.0)
+      rspec-expectations (~> 3.8.0)
+      rspec-mocks (~> 3.8.0)
+      rspec-support (~> 3.8.0)
+    rspec-support (3.8.0)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
     sass (3.5.7)
@@ -193,6 +227,8 @@ GEM
     selenium-webdriver (3.14.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
+    shoulda-matchers (3.1.2)
+      activesupport (>= 4.0.0)
     sixarm_ruby_unaccent (1.2.0)
     slim (3.0.9)
       temple (>= 0.7.6, < 0.9)
@@ -247,6 +283,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootsnap (>= 1.1.0)
+  bootstrap
   byebug
   capybara (>= 2.15, < 4.0)
   chromedriver-helper
@@ -254,6 +291,7 @@ DEPENDENCIES
   countries
   country_select
   enumerize
+  factory_bot_rails
   formtastic (~> 3.0)
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
@@ -264,8 +302,11 @@ DEPENDENCIES
   pry-stack_explorer
   puma (~> 3.11)
   rails (~> 5.2.0)
+  rails-controller-testing
+  rspec-rails
   sass-rails (~> 5.0)
   selenium-webdriver
+  shoulda-matchers
   slim-rails
   spring
   spring-watcher-listen (~> 2.0.0)
