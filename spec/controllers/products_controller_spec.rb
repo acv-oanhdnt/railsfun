@@ -84,10 +84,12 @@ RSpec.describe ProductsController, type: :controller do
   end
 
   describe '#destroy' do
-    it 'success' do
-      expect{products.first.destroy}.to change { Product.count }.by(-1)
-      delete :destroy, params: { id: products.second.id }
-      expect {Product.find(products.second.id)}.to raise_error(ActiveRecord::RecordNotFound)
+    it 'removes product from table' do
+      expect { delete :destroy, params: { id: products.second.id } }.to change { Product.count }.by(-1)
+    end
+    it 'redirect to products path' do
+      delete :destroy, params: { id: products.first.id }
+      expect(response).to redirect_to products_path
     end
   end
 end
